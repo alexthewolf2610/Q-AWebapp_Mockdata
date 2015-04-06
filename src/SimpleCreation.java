@@ -50,16 +50,17 @@ public static boolean createDefaults(Connection c){
 	Statement stmt = null;
 	try {
 		stmt = c.createStatement();
-		String sql = "insert into role values (nextval('role_seq'),'Student','Student');"
-				   + "insert into role values (nextval('role_seq'),'Assessor','Assessor');"
-				   + "insert into role values (nextval('role_seq'),'Admin','Admin');"
+		String sql = "insert into role values (1,'Student','Student');"
+				   + "insert into role values (2,'Assessor','Assessor');"
+				   + "insert into role values (3,'Admin','Admin');"
 				   + "insert into category VALUES (nextval('category_seq'),'Math');"
 				   + "insert into category VALUES (nextval('category_seq'),'English');"
 				   + "insert into category VALUES (nextval('category_seq'),'Science');"
 				   + "insert into question_type VALUES (nextval('question_type_seq'),'Radio','radio buttons');"
 				   + "insert into question_type VALUES (nextval('question_type_seq'),'Checkbox','checkboxes');"
 				   + "insert into question_type VALUES (nextval('question_type_seq'),'Drag & Drop','drag and drop type questions');"
-				   + "insert into users (id,role_id,address_id,title,first_name,last_name,email,password,dob,date_added) values (nextval('users_seq'),(select id from role where name ILIKE '%Assessor%'),(select id from address limit 1),'Mr.','Alex','Fox','af170@le.ac.uk','$2a$10$oFakQxlr/xVlGweVYS4wEenReexIExnhjHttQfXw/5yFJaAum2a1u','1992-10-26 00:00:00','"+newCurrentDate+"');";
+				   + "insert into users (id,role_id,address_id,title,first_name,last_name,email,password,dob,date_added) values (nextval('users_seq'),(select id from role where name ILIKE '%Assessor%'),(select id from address limit 1),'Mr.','Alex','Fox','af170@le.ac.uk','$2a$10$oFakQxlr/xVlGweVYS4wEenReexIExnhjHttQfXw/5yFJaAum2a1u','1992-10-26 00:00:00','"+newCurrentDate+"');"
+				   + "insert into users (id,role_id,address_id,title,first_name,last_name,email,password,dob,date_added) values (nextval('users_seq'),(select id from role where name ILIKE '%Admin%'),(select id from address limit 1),'Mr.','Alex','Fox','alex.fox2610@googlemail.com','$2a$10$oFakQxlr/xVlGweVYS4wEenReexIExnhjHttQfXw/5yFJaAum2a1u','1992-10-26 00:00:00','"+newCurrentDate+"');";
 		
 		stmt.executeUpdate(sql);
 		stmt.close();
